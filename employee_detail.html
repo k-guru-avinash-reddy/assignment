@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #333f50;
+            color: #ffffff;
+        }
+        .line {
+            height: 30px;
+            width: 6px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        h4 {
+            font-size: 22px;
+            font-weight: 900;
+        }
+        .card {
+            background-color: #000000;
+            border: none;
+            border-radius: 20px;
+            padding: 25px;
+        }
+        .avatar {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            padding-right: 0;
+        }
+        .label {
+            color: #999999;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .label-details {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .employee-attendance, .employee-check-in, .employee-check-out, .employee-predicate, .history-details {
+            background-color: #2A2B2C;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 23%;
+        }
+        .history-content {
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .history-details {
+            max-width: 30%;
+        }
+        .detail-card .icon {
+            background-color: #3F4041;
+            border-radius: 50%;
+            padding: 10px;
+        }
+        button {
+            background-color: #70EDCB;
+            border: none;
+            border-radius: 10px;
+            height: 35px;
+            padding: 0px 20px;
+            float: right;
+            &:focus {
+                outline: none;
+            }
+        }
+        button.dropdown-toggle, .history-button {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #333f50;
+            margin-right: 10px;
+        }
+        span.history-button {
+            height: 35px;
+            padding: 0px 20px;
+            float: right;
+            border-radius: 10px;
+            align-content: center;
+        }
+        button i {
+            margin-right: 10px;
+        }
+        .rotate-45 {
+            transform: rotate(45deg);
+        }
+        .rotate-225 {
+            transform: rotate(225deg);
+        }
+        .badge {
+            border-radius: 10px;
+            padding: 6px;
+            float: right;
+            margin-top: -3px;
+        }
+        .badge-on-time {
+            background-color: #2D3F3C;
+            color: #70EDCB;
+        }
+        .badge-late {
+            background-color: #3F3D34;
+            color: #FBED87;
+        }
+        .badge-absent {
+            background-color: #3A3B3C;
+            color: #AEAFAE;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .page-item {
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #1A1B1C;
+            border-radius: 10px;
+            color: #ffffff;
+            padding: 10px 15px;
+        }
+        .page-item.active {
+            background-color: #2A2B2C;
+            border: 1px solid #a4a4a4;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="card detail-card mb-4">
+            <div class="row col-md-12 heading-block mb-4 pr-0">
+                <div class="col-md-6 left-block d-flex">
+                    <div class="line"></div>
+                    <h4 class="m-0">Detail Employee</h4>
+                </div>
+                <div class="col-md-6 right-block pr-0">
+                    <button><i class="fas fa-arrow-down"></i>Download Info</button>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            This Year
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="yearDropdown">
+                            <!-- Dates will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12 employee-block mb-4">
+                <div class="col-md-2 pr-0">
+                    <img src="../assignment/images/employee.jpeg" alt="Avatar" class="avatar">
+                </div>
+                <div class="col-md-9 employee-details-block p-0">
+                    <h4>Natashia Khaleira</h4>
+                    <div class="row col-md-12 pl-0">
+                        <div class="col-md-4">
+                            <span class="label">Role</span><br><p class="label-details m-0">Head of UX Design</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="label">Phone Number<br><p class="label-details m-0">(+62) 812 3456-7890</p></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="label">Email Address<br><p class="label-details m-0">natashiakhaleira@gmail.com</p></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between col-md-12">
+                <div class="col-md-3 employee-attendance d-flex align-items-center">
+                    <i class="fas fa-arrow-right icon"></i>
+                    <div class="ml-2">
+                        <span class="label-details">309</span>
+                        <p class="label m-0">Total Attendance</p>
+                    </div>
+                </div>
+                <div class="col-md-3 employee-check-in d-flex align-items-center">
+                    <i class="fas fa-arrow-up rotate-225 icon"></i>
+                    <div class="ml-2">
+                        <span class="label-details">08:46</span>
+                        <p class="label m-0">Avg Check In Time</p>
+                    </div>
+                </div>
+                <div class="col-md-3 employee-check-out d-flex align-items-center">
+                    <i class="fas fa-arrow-up rotate-45 icon"></i>
+                    <div class="ml-2">
+                        <span class="label-details">17:04</span>
+                        <p class="label m-0">Avg Check Out Time</p>
+                    </div>
+                </div>
+                <div class="col-md-3 employee-predicate d-flex align-items-center">
+                    <i class="fas fa-award icon"></i>
+                    <div class="ml-2">
+                        <span class="label-details">Role Model</span>
+                        <p class="label m-0">Employee Predicate</p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="card history-card">
+            <div class="row col-md-12 heading-block mb-4 pr-0">
+                <div class="col-md-6 left-block d-flex">
+                    <div class="line"></div>
+                    <h4 class="m-0">Attendance History</h4>
+                </div>
+                <div class="col-md-6 right-block pr-0">
+                    <button class="history-button m-0"><i class="fa fa-filter"></i>Filter</button>
+                    <button class="history-button"><i class="fa fa-arrow-down m-0"></i><i class="fa fa-arrow-up"></i>Sort</button>
+                    <span class="history-button mr-4"><i class="fa fa-bars"></i></span>
+                    <span class="history-button"><i class="fas fa-th-large"></i></span>
+                </div>
+            </div>
+
+            <div class="row col-md-12 mb-3 history-content">
+                <!-- History details will be dynamically inserted here and inner html is in script-->
+            </div>
+
+            <div class="pagination">
+                <!-- Pagination controls will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const historyData = [
+            {
+                date: 'March 08, 2023',
+                status: 'On Time',
+                badgeClass: 'badge-on-time',
+                checkInTime: '08:53',
+                checkOutTime: '17:15'
+            },
+            {
+                date: 'March 07, 2023',
+                status: 'Late',
+                badgeClass: 'badge-late',
+                checkInTime: '09:27',
+                checkOutTime: '17:09'
+            },
+            {
+                date: 'March 06, 2023',
+                status: 'Absent',
+                badgeClass: 'badge-absent',
+                checkInTime: '-',
+                checkOutTime: '-'
+            },
+            {
+                date: 'March 05, 2023',
+                status: 'On Time',
+                badgeClass: 'badge-on-time',
+                checkInTime: '08:55',
+                checkOutTime: '17:10'
+            },
+            {
+                date: 'March 04, 2023',
+                status: 'On Time',
+                badgeClass: 'badge-on-time',
+                checkInTime: '08:58',
+                checkOutTime: '17:06'
+            },
+            {
+                date: 'March 03, 2023',
+                status: 'Late',
+                badgeClass: 'badge-late',
+                checkInTime: '08:40',
+                checkOutTime: '17:12'
+            }
+        ];
+
+        const itemsPerPage = 3;
+        let currentPage = 1;
+
+        function renderHistory() {
+            const historyContent = document.querySelector('.history-content');
+            historyContent.innerHTML = '';
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = historyData.slice(start, end);
+
+            paginatedItems.forEach(item => {
+                historyContent.innerHTML += `
+                    <div class="col-md-4 history-details">
+                        <h6 class="label-details"><i class="far fa-clock mr-1"></i> ${item.date} <span class="badge ${item.badgeClass}">${item.status}</span></h6>
+                        <div class="d-flex">
+                            <div class="mr-5">
+                                <span class="label">Check In Time</span><br><p class="label-details m-0">${item.checkInTime}</p>
+                            </div>
+                            <div>
+                                <span class="label">Check Out Time</span><br><p class="label-details m-0">${item.checkOutTime}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderPagination() {
+            const paginationControls = document.querySelector('.pagination');
+            paginationControls.innerHTML = '';
+
+            const totalPages = Math.ceil(historyData.length / itemsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationControls.innerHTML += `
+                    <div class="page-item ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</div>
+                `;
+            }
+
+            document.querySelectorAll('.page-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    currentPage = Number(this.getAttribute('data-page'));
+                    renderHistory();
+                    renderPagination();
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderHistory();
+            renderPagination();
+        });
+    </script>
+</body>
+</html>
+    
